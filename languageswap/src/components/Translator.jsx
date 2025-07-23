@@ -128,6 +128,9 @@ const languages = [
   { code: "am", name: "Amharic" }, // If supported by backend
 ];
 
+const url = import.meta.env.VITE_API_URL + "/translate";
+
+
 const Translator = () => {
   const [text, setText] = useState("");
   const [translated, setTranslated] = useState("");
@@ -147,7 +150,7 @@ const Translator = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3001/translate", {
+      const response = await fetch(`${url}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
